@@ -2,13 +2,13 @@ import React from "react";
 import Reminder from "../models/Reminder";
 
 interface ReminderListProps {
-  items: Reminder[];
+  reminders: Reminder[];
 }
 
-const ReminderList = ({ items }: ReminderListProps) => {
+const ReminderList = ({ reminders }: ReminderListProps) => {
   return (
     <ul>
-      {items.map((reminder) => (
+      {reminders.map((reminder) => (
         <li key={reminder.id}>{reminder.title}</li>
       ))}
     </ul>
