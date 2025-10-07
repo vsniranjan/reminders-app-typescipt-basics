@@ -13,12 +13,17 @@ function App() {
     return setRemainders(reminders);
   };
 
+  const removeRemainder = (id: number) => {
+    // console.log(id);
+    setRemainders(reminders.filter((reminder) => reminder.id !== id));
+  };
+
   useEffect(() => {
     loadReminders();
   }, []);
   return (
     <div className='App'>
-      <ReminderList reminders={reminders} />
+      <ReminderList reminders={reminders} onRemoveRemainder={removeRemainder} />
     </div>
   );
 }
