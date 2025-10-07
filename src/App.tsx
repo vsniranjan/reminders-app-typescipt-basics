@@ -15,8 +15,12 @@ function App() {
   };
 
   const removeRemainder = (id: number) => {
-    // console.log(id);
     setRemainders(reminders.filter((reminder) => reminder.id !== id));
+  };
+
+  const addRemainder = async (title: string) => {
+    const newReminder = await remainderService.addReminders(title);
+    setRemainders([newReminder, ...reminders]);
   };
 
   useEffect(() => {
@@ -24,7 +28,7 @@ function App() {
   }, []);
   return (
     <div className='App'>
-      <NewRemainder />
+      <NewRemainder onAddReminder={addRemainder} />
       <ReminderList reminders={reminders} onRemoveRemainder={removeRemainder} />
     </div>
   );
