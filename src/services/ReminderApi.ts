@@ -5,7 +5,9 @@ class ReminderService {
   http = axios.create({ baseURL: "https://jsonplaceholder.typicode.com/" });
 
   async getReminders() {
-    const response = await this.http.get<Reminder[]>("/todos");
+    const response = await this.http.get<Reminder[]>("/todos", {
+      params: { _limit: 10 },
+    });
     return response.data;
   }
 
